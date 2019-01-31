@@ -14,7 +14,14 @@ class HangpersonGame
     @guesses = ''
     @wrong_guesses = ''
   end
-  
+
+  def guess(letter)
+    # finally handle check and return true
+   
+    @guesses << letter
+    
+    return true
+  end
 
   # You can test it by running $ bundle exec irb -I. -r app.rb
   # And then in the irb: irb(main):001:0> HangpersonGame.get_random_word
