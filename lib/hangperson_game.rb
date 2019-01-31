@@ -51,13 +51,20 @@ class HangpersonGame
   end
   
   def check_win_or_lose
-    if word_with_guesses.downcase == @word.downcase
-      return :win
-    elsif @wrong_guesses.length >= 7
-      return :lose
-    else
-      return :play
-    end
+    # if word_with_guesses.downcase == @word.downcase
+    #   return :win
+    # elsif @wrong_guesses.length >= 7
+    #   return :lose
+    # else
+    #   return :play
+    # end
+    counter = 0
+    return :lose if @wrong_guesses.length >= 7
+      @word.each_char do |letter|
+        counter += 1 if @guesses.include? letter
+      end
+      if counter == @word.length then :win
+      else :play end
   end
   
   # You can test it by running $ bundle exec irb -I. -r app.rb
