@@ -18,9 +18,12 @@ class HangpersonGame
   def guess(letter)
     # finally handle check and return true
    
-    @guesses << letter
+    if @word.include? letter
+      @guesses << letter
+    else
+     @wrong_guesses << letter
+    end
     
-    return true
   end
 
   # You can test it by running $ bundle exec irb -I. -r app.rb
