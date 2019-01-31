@@ -29,11 +29,12 @@ class HangpersonGame
       return false
     end
     
-    if @word.include? letter
-      @guesses << letter
+    if @word.include? letter and !@guesses.include? letter
+      @guesses.concat char
     else
-     @wrong_guesses << letter
+    # @wrong_guesses << letter
      @wrong_guesses.concat letter
+     
     end
     
     return true
@@ -52,13 +53,6 @@ class HangpersonGame
   end
   
   def check_win_or_lose
-    # if word_with_guesses.downcase == @word.downcase
-    #   return :win
-    # elsif @wrong_guesses.length >= 7
-    #   return :lose
-    # else
-    #   return :play
-    # end
     counter = 0
     return :lose if @wrong_guesses.length >= 7
       @word.each_char do |letter|
