@@ -71,6 +71,11 @@ class HangpersonApp < Sinatra::Base
   
   get '/win' do
     ### YOUR CODE HERE ###
+    if session[:word_array] != session[:answer_array]
+  	  redirect to('/lose')
+    end 
+  	variables
+	  session[:game_over] = true
     erb :win # You may change/remove this line
   end
   
