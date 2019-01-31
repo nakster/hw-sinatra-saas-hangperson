@@ -52,7 +52,7 @@ class HangpersonApp < Sinatra::Base
         redirect '/show'
       end
     rescue ArgumentError
-      flash[:message] = "Your input was invalid"
+      flash[:message] = "Invalid guess."
       redirect '/show'
     end
     redirect '/show'
