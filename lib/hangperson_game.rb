@@ -33,6 +33,7 @@ class HangpersonGame
       @guesses << letter
     else
      @wrong_guesses << letter
+     @wrong_guesses.concat letter
     end
     
     return true
