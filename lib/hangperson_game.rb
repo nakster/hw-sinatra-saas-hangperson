@@ -18,12 +18,16 @@ class HangpersonGame
   def guess(letter)
     # finally handle check and return true
    
+   #checks for repeated letters
+    if @guesses.include?(letter) || @wrong_guesses.include?(letter)
+      return false
+    end
+    
     if @word.include? letter
       @guesses << letter
     else
      @wrong_guesses << letter
     end
-    
   end
 
   # You can test it by running $ bundle exec irb -I. -r app.rb
