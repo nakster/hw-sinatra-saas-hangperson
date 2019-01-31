@@ -17,6 +17,10 @@ class HangpersonGame
 
   def guess(letter)
    # finally handle check and return true
+   #when invalid
+   if letter == nil || !(letter.class == String && letter =~ /^[A-z]$/i)
+      raise ArgumentError
+   end
    # is case insensitive
    letter.downcase!
    
