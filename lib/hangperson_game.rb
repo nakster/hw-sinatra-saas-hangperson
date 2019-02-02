@@ -30,11 +30,12 @@ class HangpersonGame
     end
     
     if @word.include? letter and !@guesses.include? letter
-      @guesses.concat char
+      @guesses.concat letter
+      return true
     else
     # @wrong_guesses << letter
      @wrong_guesses.concat letter
-     
+     return true
     end
     
     return true
