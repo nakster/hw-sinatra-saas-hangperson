@@ -40,26 +40,6 @@ class HangpersonApp < Sinatra::Base
   # If a guess is repeated, set flash[:message] to "You have already used that letter."
   # If a guess is invalid, set flash[:message] to "Invalid guess."
   post '/guess' do
-    
-    # letter = params[:guess].to_s[0]
-    # # handle argument errors too
-    # begin
-    #   if !@game.guess(letter)
-    #     flash[:message] = "You have already used that letter"
-    #   end
-    #   if @game.check_win_or_lose == :win
-    #     redirect '/win'
-    #   elsif @game.check_win_or_lose == :lose
-    #     redirect '/lose'
-    #   else 
-    #     redirect '/show'
-    #   end
-    # rescue ArgumentError
-    #   flash[:message] = "Invalid guess."
-    #   redirect '/show'
-    # end
-    # redirect '/show'
-    
     if params[:guess].to_s[0] =~ /[[:alpha:]]/
       letter = params[:guess].to_s[0]
       if @game.guesses.include? letter or @game.wrong_guesses.include? letter

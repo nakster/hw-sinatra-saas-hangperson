@@ -16,45 +16,33 @@ class HangpersonGame
   end
 
   def guess(char)
-  # # finally handle check and return true
-  #   # is case insensitive
-  # letter.downcase!
-   
-  # #when invalid
-  # if letter == nil || !(letter.class == String && letter =~ /^[A-z]$/i)
-  #     raise ArgumentError
-  # end
- 
-  # #checks for repeated letters
-  #   if @guesses.include?(letter) || @wrong_guesses.include?(letter)
-  #     return false
-  #   end
+
+    # if char =~ /[[:alpha:]]/
+    #     char.downcase!
+    #     if @word.include? char and !@guesses.include? char
+    #       @guesses.concat char
+    #       return true
+    #     elsif !@wrong_guesses.include? char and !@word.include? char
+    #       @wrong_guesses.concat char
+    #       return true
+    #     else
+    #       return false
+    #     end
+    #   else
+    #     char = :invalid
+    #     raise ArgumentError
+    # end
     
-  #   if @word.include? letter and !@guesses.include? letter
-  #     @guesses.concat letter
-  #     return true
-  #   else
-  #   # @wrong_guesses << letter
-  #   @wrong_guesses.concat letter
-  #   return true
-  #   end
-    
-  #   return true
-    if char =~ /[[:alpha:]]/
-        char.downcase!
-        if @word.include? char and !@guesses.include? char
-          @guesses.concat char
-          return true
-        elsif !@wrong_guesses.include? char and !@word.include? char
-          @wrong_guesses.concat char
-          return true
-        else
-          return false
-        end
-      else
-        char = :invalid
-        raise ArgumentError
+    result = nil
+    begin
+    result = @game.guess(char)
+    rescue ArgumentError => e
+        flash[:message] = "Invalid guess."
     end
+    if !result.nil? and !result
+      flash[:message] = "You have already used that letter."
+    end
+      redirect '/show'
   end
 
   def word_with_guesses
