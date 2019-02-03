@@ -17,32 +17,21 @@ class HangpersonGame
 
   def guess(char)
 
-    # if char =~ /[[:alpha:]]/
-    #     char.downcase!
-    #     if @word.include? char and !@guesses.include? char
-    #       @guesses.concat char
-    #       return true
-    #     elsif !@wrong_guesses.include? char and !@word.include? char
-    #       @wrong_guesses.concat char
-    #       return true
-    #     else
-    #       return false
-    #     end
-    #   else
-    #     char = :invalid
-    #     raise ArgumentError
-    # end
-    
-    result = nil
-    begin
-    result = @game.guess(char)
-    rescue ArgumentError => e
-        flash[:message] = "Invalid guess."
+    if char =~ /[[:alpha:]]/
+        char.downcase!
+        if @word.include? char and !@guesses.include? char
+          @guesses.concat char
+          return true
+        elsif !@wrong_guesses.include? char and !@word.include? char
+          @wrong_guesses.concat char
+          return true
+        else
+          return false
+        end
+      else
+        char = :invalid
+        raise ArgumentError
     end
-    if !result.nil? and !result
-      flash[:message] = "You have already used that letter."
-    end
-      redirect '/show'
   end
 
   def word_with_guesses
