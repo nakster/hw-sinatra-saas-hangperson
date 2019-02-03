@@ -15,30 +15,46 @@ class HangpersonGame
     @wrong_guesses = ''
   end
 
-  def guess(letter)
-   # finally handle check and return true
-   #when invalid
-   if letter == nil || !(letter.class == String && letter =~ /^[A-z]$/i)
-      raise ArgumentError
-   end
-   # is case insensitive
-   letter.downcase!
+  def guess(char)
+  # # finally handle check and return true
+  #   # is case insensitive
+  # letter.downcase!
    
-   #checks for repeated letters
-    if @guesses.include?(letter) || @wrong_guesses.include?(letter)
-      return false
-    end
+  # #when invalid
+  # if letter == nil || !(letter.class == String && letter =~ /^[A-z]$/i)
+  #     raise ArgumentError
+  # end
+ 
+  # #checks for repeated letters
+  #   if @guesses.include?(letter) || @wrong_guesses.include?(letter)
+  #     return false
+  #   end
     
-    if @word.include? letter and !@guesses.include? letter
-      @guesses.concat letter
-      return true
-    else
-    # @wrong_guesses << letter
-     @wrong_guesses.concat letter
-     return true
-    end
+  #   if @word.include? letter and !@guesses.include? letter
+  #     @guesses.concat letter
+  #     return true
+  #   else
+  #   # @wrong_guesses << letter
+  #   @wrong_guesses.concat letter
+  #   return true
+  #   end
     
-    return true
+  #   return true
+    if char =~ /[[:alpha:]]/
+        char.downcase!
+        if @word.include? char and !@guesses.include? char
+          @guesses.concat char
+          return true
+        elsif !@wrong_guesses.include? char and !@word.include? char
+          @wrong_guesses.concat char
+          return true
+        else
+          return false
+        end
+      else
+        char = :invalid
+        raise ArgumentError
+    end
   end
 
   def word_with_guesses
