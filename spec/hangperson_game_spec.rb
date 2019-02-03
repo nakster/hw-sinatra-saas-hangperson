@@ -15,7 +15,7 @@ describe HangpersonGame do
       expect(@hangpersonGame).to be_an_instance_of(HangpersonGame)
       expect(@hangpersonGame.word).to eq('glorp')
       expect(@hangpersonGame.guesses).to eq('')
-      expect(@hangpersonGame.wrong_guesses).to eq('')
+      expect(@hangpersonGame.wrong_guesses).to eq('Invalid guess')
     end
   end
 
