@@ -22,6 +22,8 @@ class HangpersonApp < Sinatra::Base
   end
   
   get '/new' do
+    word = params[:word] || HangpersonGame.get_random_word
+    @game = HangpersonGame.new(word)
     erb :new
   end
   
